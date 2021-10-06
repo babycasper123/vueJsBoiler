@@ -2,7 +2,7 @@
   <div class="row">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand timeSheetLogo" href="#">TS</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -33,9 +33,9 @@
             >
           </li> -->
            <li  @mouseover="isHovering = true" @mouseout="isHovering = false" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown link
-          </a>
+          </a> -->
           <ul class="dropdown-menu" :class="isHovering ? 'show' : ''" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -62,3 +62,18 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+.timeSheetLogo{
+    background-color: #3498db;
+    color: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    padding: 3px;
+    vertical-align: middle;
+    margin: auto;
+}
+</style>
