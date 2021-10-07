@@ -57,6 +57,7 @@ export default {
 
   computed: {
     days() {
+      console.log(...this.previousMonthDays);
       return [
         ...this.previousMonthDays,
         ...this.currentMonthDays,
