@@ -17,7 +17,9 @@
       class="timeofDay PM"
       >{{ day.tsSettings == null ? "" : day.tsSettings.pm }}</span
     >
-    <span class="day">{{ label }}</span>
+    <span class="day" :class="day.tsSettings ? day.tsSettings.pm : ''">{{
+      label
+    }}</span>
     <span
       class="dayDescription"
       v-if="
@@ -150,7 +152,7 @@ export default {
   background-color: #e4e6e7;
 }
 
-.calendar-day > span.day {
+.calendar-day > .day {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -176,7 +178,7 @@ export default {
 }
 
 .calendar-day--today > .day {
-  color: #3498db;
+  color: #26a65b;
   border-radius: 9999px;
   font-weight: bold;
 }
@@ -198,5 +200,9 @@ export default {
 
 .calendar-day--not-current > .timeofDay {
   display: none;
+}
+
+.day.PHO{
+  color: #2980b9;
 }
 </style>

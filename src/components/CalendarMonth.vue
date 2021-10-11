@@ -6,13 +6,20 @@
         class="calendar-month-header-selected-month"
       />
 
+      <div class="dashboardbtnHolder" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">
+        <span class="dashbaordIcon"><i class="fas fa-calendar-check"></i></span>
+        <span class="dashbaordText">Dashboard</span>
+      </div>
+
+
+
+
       <CalendarDateSelector
         :current-date="today"
         :selected-date="selectedDate"
         @dateSelected="selectDate"
       />
     </div>
-
     <CalendarWeekdays />
 
     <ol class="days-grid">
@@ -23,7 +30,13 @@
         :is-today="day.date === today"
       />
     </ol>
+    
+
+    <Dashboard/>
+    
+
   </div>
+  
 </template>
 
 <script>
@@ -34,6 +47,8 @@ import CalendarMonthDayItem from "./CalendarMonthDayItem";
 import CalendarDateIndicator from "./CalendarDateIndicator";
 import CalendarDateSelector from "./CalendarDateSelector";
 import CalendarWeekdays from "./CalendarWeekdays";
+
+import Dashboard from "./dashboard"
 
 import tsSettings from "../DB/timesheet.json";
 
@@ -48,6 +63,7 @@ export default {
     CalendarDateIndicator,
     CalendarDateSelector,
     CalendarWeekdays,
+    Dashboard
   },
 
   data() {
@@ -84,22 +100,25 @@ export default {
 
     currentMonthDays() {
       return [...Array(this.numberOfDaysInMonth)].map((day, index) => {
-
-          var dateSettings = this.tsSettings.timesheet.daySettings.find((element) => {
-          let tsDay = new Date(element.day).toLocaleDateString();
-          let calendarDay = new Date(dayjs(`${this.year}-${this.month}-${index + 1}`).format(
-            "YYYY-MM-DD"
-          )).toLocaleDateString();
-          // console.log(tsDay,calendarDay)
-          return tsDay == calendarDay;
-        });
+        var dateSettings = this.tsSettings.timesheet.daySettings.find(
+          (element) => {
+            let tsDay = new Date(element.day).toLocaleDateString();
+            let calendarDay = new Date(
+              dayjs(`${this.year}-${this.month}-${index + 1}`).format(
+                "YYYY-MM-DD"
+              )
+            ).toLocaleDateString();
+            // console.log(tsDay,calendarDay)
+            return tsDay == calendarDay;
+          }
+        );
 
         return {
           date: dayjs(`${this.year}-${this.month}-${index + 1}`).format(
             "YYYY-MM-DD"
           ),
           isCurrentMonth: true,
-          tsSettings : dateSettings != undefined ? dateSettings : null
+          tsSettings: dateSettings != undefined ? dateSettings : null,
         };
       });
     },
@@ -173,6 +192,19 @@ export default {
 </script>
 
 <style scoped>
+.dashboardbtnHolder {
+  display: flex;
+  align-self: center;
+  background-color: #26a65b;
+  color: white;
+  border-radius: 3px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.dashboardbtnHolder > * {
+  margin: 3px;
+}
+
 .calendar-month {
   position: relative;
   background-color: var(--grey-200);
@@ -214,7 +246,7 @@ export default {
   border-top-right-radius: 3px;
 }
 
-.calendar-month-header{
-      margin: 22px 0px 30px 0px;
+.calendar-month-header {
+  margin: 22px 0px 30px 0px;
 }
 </style>

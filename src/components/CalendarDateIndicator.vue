@@ -1,5 +1,12 @@
 <template>
-  <div class="calendar-date-indicator">{{ selectedMonth }}</div>
+  <div class="calendar-date-indicator">
+    <span class="presentMonthYear">
+      {{ selectedMonth }}
+    </span>
+    <span class="timeSheetStatus" data-toggle="tooltip" data-placement="right" title="Validated by : RAJAN Gowrisankar">
+      <i class="fas fa-check-circle timesheetValidated"></i>
+    </span>
+  </div>
 </template>
 
 <script>
@@ -7,15 +14,15 @@ export default {
   props: {
     selectedDate: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 
   computed: {
     selectedMonth() {
       return this.selectedDate.format("MMMM YYYY");
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -24,6 +31,11 @@ export default {
   font-size: 24px;
   font-weight: 600;
   color: var(--grey-00);
+}
+
+.timesheetValidated {
+  margin-left: 10px;
+  color: #26a65b;
 }
 </style>
 
