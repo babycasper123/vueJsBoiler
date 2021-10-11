@@ -10,12 +10,12 @@
     <span
       :class="day.tsSettings ? day.tsSettings.am : ''"
       class="timeofDay AM"
-      >{{ day.tsSettings == null ? "P1" : day.tsSettings.am }}</span
+      >{{ day.tsSettings == null ? "" : day.tsSettings.am }}</span
     >
     <span
       :class="day.tsSettings ? day.tsSettings.pm : ''"
       class="timeofDay PM"
-      >{{ day.tsSettings == null ? "P2" : day.tsSettings.pm }}</span
+      >{{ day.tsSettings == null ? "" : day.tsSettings.pm }}</span
     >
     <span class="day">{{ label }}</span>
     <span
@@ -93,7 +93,9 @@ export default {
   font-family: "Raleway";
   font-size: 1.2vw;
 }
-
+.timeofDay.WED {
+  background-color: #1c7d44;
+}
 .timeofDay.AM.HOL {
   color: #26a65b;
   background-color: white;
@@ -191,7 +193,7 @@ export default {
   color: white;
   border-right: 3px solid #d6dadb;
   font-size: 1vw;
-  font-family: 'Raleway';
+  font-family: "Raleway";
 }
 
 .calendar-day--not-current > .timeofDay {

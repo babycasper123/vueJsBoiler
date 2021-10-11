@@ -9,14 +9,14 @@
             },
             {
                 "day" : "2021-10-2",
-                "am" : "P1",
-                "pm" : "P1",
+                "am" : "WED",
+                "pm" : "WED",
                 "description" : ""
             },
             {
                 "day" : "2021-10-3",
-                "am" : "P1",
-                "pm" : "P1",
+                "am" : "WED",
+                "pm" : "WED",
                 "description" : ""
             },
             {
@@ -49,13 +49,13 @@
             },
             {
                 "day" : "2021-10-9",
-                "am" : "P1",
-                "pm" : "P1",
+                "am" : "WED",
+                "pm" : "WED",
                 "description" : ""
             },{
                 "day" : "2021-10-10",
-                "am" : "P1",
-                "pm" : "P1"
+                "am" : "WED",
+                "pm" : "WED"
             },
             {
                 "day" : "2021-10-11",
@@ -86,13 +86,13 @@
                 "description" : ""
             },{
                 "day" : "2021-10-16",
-                "am" : "P1",
-                "pm" : "P1"
+                "am" : "WED",
+                "pm" : "WED"
             },
             {
                 "day" : "2021-10-17",
-                "am" : "P1",
-                "pm" : "P1",
+                "am" : "WED",
+                "pm" : "WED",
                 "description" : ""
             },
             {
@@ -125,14 +125,14 @@
             },
             {
                 "day" : "2021-10-23",
-                "am" : "P1",
-                "pm" : "P1",
+                "am" : "WED",
+                "pm" : "WED",
                 "description" : ""
             },
             {
                 "day" : "2021-10-24",
-                "am" : "P1",
-                "pm" : "P1",
+                "am" : "WED",
+                "pm" : "WED",
                 "description" : ""
             },
             {
@@ -165,14 +165,14 @@
             },
             {
                 "day" : "2021-10-30",
-                "am" : "P1",
-                "pm" : "P1",
+                "am" : "WED",
+                "pm" : "WED",
                 "description" : ""
             },
             {
                 "day" : "2021-10-31",
-                "am" : "P1",
-                "pm" : "P1",
+                "am" : "WED",
+                "pm" : "WED",
                 "description" : ""
             }
         ]

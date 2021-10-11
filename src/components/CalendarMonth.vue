@@ -86,10 +86,11 @@ export default {
       return [...Array(this.numberOfDaysInMonth)].map((day, index) => {
 
           var dateSettings = this.tsSettings.timesheet.daySettings.find((element) => {
-          let tsDay = new Date(element.day).toISOString();
+          let tsDay = new Date(element.day).toLocaleDateString();
           let calendarDay = new Date(dayjs(`${this.year}-${this.month}-${index + 1}`).format(
             "YYYY-MM-DD"
-          )).toISOString();
+          )).toLocaleDateString();
+          // console.log(tsDay,calendarDay)
           return tsDay == calendarDay;
         });
 
