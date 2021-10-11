@@ -1,15 +1,32 @@
 <template>
   <li
     class="calendar-day"
-    :class="{
-      'calendar-day--not-current': !day.isCurrentMonth,
-      'calendar-day--today': isToday,
-      weekend: isWeekend,
-    }"
+    :class="[
+      !day.isCurrentMonth ? 'calendar-day--not-current' : '',
+      isToday ? 'calendar-day--today' : '',
+      isWeekend ? 'weekend' : '',
+    ]"
   >
-    <span class="timeofDay AM">P1</span>
-    <span class="timeofDay PM">P2</span>
+    <span
+      :class="day.tsSettings ? day.tsSettings.am : ''"
+      class="timeofDay AM"
+      >{{ day.tsSettings == null ? "P1" : day.tsSettings.am }}</span
+    >
+    <span
+      :class="day.tsSettings ? day.tsSettings.pm : ''"
+      class="timeofDay PM"
+      >{{ day.tsSettings == null ? "P2" : day.tsSettings.pm }}</span
+    >
     <span class="day">{{ label }}</span>
+    <span
+      class="dayDescription"
+      v-if="
+        day.tsSettings &&
+        day.tsSettings.description &&
+        day.tsSettings.am == 'PHO'
+      "
+      >{{ day.tsSettings.description }}
+    </span>
   </li>
 </template>
 
@@ -34,6 +51,18 @@ export default {
       type: Boolean,
       default: false,
     },
+    tsSettings: {
+      type: Object,
+      default: null,
+    },
+    amPHO: {
+      type: Boolean,
+      default: false,
+    },
+    PHO: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   computed: {
@@ -50,6 +79,47 @@ export default {
 </script>
 
 <style scoped>
+.calendar-day.PHO {
+  background-color: #6ab04c;
+}
+
+.dayDescription {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  color: #2980b9;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: "Raleway";
+  font-size: 1.2vw;
+}
+
+.timeofDay.AM.HOL {
+  color: #26a65b;
+  background-color: white;
+  font-weight: 500;
+  border-bottom: 2px solid #26a65b;
+  border-top: 2px solid #26a65b;
+  border-right: 2px solid #26a65b;
+  border-left: 2px solid #26a65b;
+  border-radius: 2px;
+}
+
+.timeofDay.PM.HOL {
+  color: #26a65b;
+  background-color: white;
+  font-weight: 500;
+  border-right: 2px solid #26a65b;
+  border-bottom: 2px solid #26a65b;
+  border-left: 2px solid #26a65b;
+}
+
+.timeofDay.PHO {
+  background-color: #2980b9;
+  color: white;
+  font-weight: 500;
+}
+
 .calendar-day {
   position: relative;
   min-height: calc(1.5vw + 104px);
@@ -58,6 +128,8 @@ export default {
   color: var(--grey-800);
   padding: 5px;
   border: 1px solid #d6dadb;
+  margin: 2px;
+  display: flex;
 }
 
 .PM {
@@ -86,6 +158,7 @@ export default {
   height: var(--day-label-size);
   font-weight: bold;
   color: #465053;
+  font-size: 1.1rem;
 }
 
 .calendar-day--not-current {
@@ -109,7 +182,7 @@ export default {
 .timeofDay {
   background-color: #26a65b;
   height: 50%;
-  width: 32px;
+  width: 2.5vw;
   text-align: center;
   display: inline-flex;
   align-items: center;
@@ -117,6 +190,8 @@ export default {
   padding: 10px;
   color: white;
   border-right: 3px solid #d6dadb;
+  font-size: 1vw;
+  font-family: 'Raleway';
 }
 
 .calendar-day--not-current > .timeofDay {

@@ -13,7 +13,7 @@
       />
     </div>
 
-    <CalendarWeekdays/>
+    <CalendarWeekdays />
 
     <ol class="days-grid">
       <CalendarMonthDayItem
@@ -27,7 +27,6 @@
 </template>
 
 <script>
-
 import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import weekOfYear from "dayjs/plugin/weekOfYear";
@@ -35,6 +34,8 @@ import CalendarMonthDayItem from "./CalendarMonthDayItem";
 import CalendarDateIndicator from "./CalendarDateIndicator";
 import CalendarDateSelector from "./CalendarDateSelector";
 import CalendarWeekdays from "./CalendarWeekdays";
+
+import tsSettings from "../DB/timesheet.json";
 
 dayjs.extend(weekday);
 dayjs.extend(weekOfYear);
@@ -46,22 +47,22 @@ export default {
     CalendarMonthDayItem,
     CalendarDateIndicator,
     CalendarDateSelector,
-    CalendarWeekdays
+    CalendarWeekdays,
   },
 
   data() {
     return {
-      selectedDate: dayjs()
+      selectedDate: dayjs(),
+      tsSettings: tsSettings,
     };
   },
 
   computed: {
     days() {
-      console.log(...this.previousMonthDays);
       return [
         ...this.previousMonthDays,
         ...this.currentMonthDays,
-        ...this.nextMonthDays
+        ...this.nextMonthDays,
       ];
     },
 
@@ -83,11 +84,21 @@ export default {
 
     currentMonthDays() {
       return [...Array(this.numberOfDaysInMonth)].map((day, index) => {
+
+          var dateSettings = this.tsSettings.timesheet.daySettings.find((element) => {
+          let tsDay = new Date(element.day).toISOString();
+          let calendarDay = new Date(dayjs(`${this.year}-${this.month}-${index + 1}`).format(
+            "YYYY-MM-DD"
+          )).toISOString();
+          return tsDay == calendarDay;
+        });
+
         return {
           date: dayjs(`${this.year}-${this.month}-${index + 1}`).format(
             "YYYY-MM-DD"
           ),
-          isCurrentMonth: true
+          isCurrentMonth: true,
+          tsSettings : dateSettings != undefined ? dateSettings : null
         };
       });
     },
@@ -116,10 +127,11 @@ export default {
         (day, index) => {
           return {
             date: dayjs(
-              `${previousMonth.year()}-${previousMonth.month() +
-                1}-${previousMonthLastMondayDayOfMonth + index}`
+              `${previousMonth.year()}-${previousMonth.month() + 1}-${
+                previousMonthLastMondayDayOfMonth + index
+              }`
             ).format("YYYY-MM-DD"),
-            isCurrentMonth: false
+            isCurrentMonth: false,
           };
         }
       );
@@ -141,10 +153,10 @@ export default {
           date: dayjs(
             `${nextMonth.year()}-${nextMonth.month() + 1}-${index + 1}`
           ).format("YYYY-MM-DD"),
-          isCurrentMonth: false
+          isCurrentMonth: false,
         };
       });
-    }
+    },
   },
 
   methods: {
@@ -154,8 +166,8 @@ export default {
 
     selectDate(newSelectedDate) {
       this.selectedDate = newSelectedDate;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -195,9 +207,13 @@ export default {
 }
 
 .calendar-day:nth-child(1) {
-    border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
 }
 .calendar-day:nth-child(7) {
-    border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.calendar-month-header{
+      margin: 22px 0px 30px 0px;
 }
 </style>

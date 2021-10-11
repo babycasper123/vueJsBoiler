@@ -6,6 +6,7 @@ import Bootstrap from 'bootstrap/dist/js/bootstrap';
 
 
 
+
 import '@fortawesome/fontawesome-free/css/all.css'
 import fontawesome from '@fortawesome/fontawesome-free/js/all.js'
 

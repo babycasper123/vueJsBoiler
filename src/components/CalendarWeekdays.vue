@@ -1,6 +1,8 @@
 <template>
-  <ol class="day-of-week">
-    <li v-for="weekday in weekdays" :key="weekday">{{ weekday }}</li>
+  <ol class="day-of-week-container">
+    <li class="day-of-week" v-for="weekday in weekdays" :key="weekday">
+      {{ weekday }}
+    </li>
   </ol>
 </template>
 
@@ -13,19 +15,21 @@ export default {
   computed: {
     weekdays() {
       return WEEKDAYS;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-.day-of-week {
+.day-of-week-container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 }
 
-.day-of-week > * {
-  text-align: right;
-  padding-right: 5px;
+.day-of-week {
+  color: #465053;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
 }
 </style>
