@@ -1,45 +1,114 @@
 <template>
-  <div
-    class="modal fade"
-    id="exampleModalFullscreen"
-    tabindex="-1"
-    aria-labelledby="exampleModalFullscreenLabel"
-    aria-hidden="true"
-    style="display: none"
-  >
-    <div class="modal-dialog modal-fullscreen">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h5 class="modal-title h4 dashboardTitle" id="exampleModalFullscreenLabel">
-            Dashboard
-          </h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+  <div>
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
+    >
+      <div class="offcanvas-header">
+        <div class="offcanvas-title" id="offcanvasExampleLabel">
+          <span class="dashboardFlag"
+            ><span class="flag-icon flag-icon-in"></span
+          ></span>
+          <h5 class="dashboardTitle">CHANDRAN Vishnu</h5>
         </div>
-        <div class="modal-body">
-
-                <div class="shadow-sm p-3 mb-5 bg-white rounded"><span class="flag-icon flag-icon-in"></span></div>
-
-
-
-
-
-
-
-
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="shadow p-3 mb-3 mt-2 bg-body rounded">
+          <div class="row">
+            <div class="col-lg-12">
+              <h6 class="text-center">Monthly Summary</h6>
+              <div class="monthlySummarySection">
+                <ul class="list-group">
+                  <li
+                    class="
+                      list-group-item
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                    "
+                  >
+                    P1
+                    <span class="badge bg-primary rounded-pill">14</span>
+                  </li>
+                  <li
+                    class="
+                      list-group-item
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                    "
+                  >
+                    WKD
+                    <span class="badge bg-primary rounded-pill">2</span>
+                  </li>
+                  <li
+                    class="
+                      list-group-item
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                    "
+                  >
+                    PHO
+                    <span class="badge bg-primary rounded-pill">1</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
+
+        <div class="shadow p-3 mb-3 mt-4 bg-body rounded">
+          <div class="row">
+            <div class="col-lg-12">
+              <h6 class="text-center">Leave Summary</h6>
+              <div class="leaveSummarySection">
+                <ul class="list-group">
+                  <li
+                    class="
+                      list-group-item
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                    "
+                  >
+                    Total leaves available
+                    <span class="badge bg-primary rounded-pill">13</span>
+                  </li>
+                  <li
+                    class="
+                      list-group-item
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                    "
+                  >
+                    Carry over leaves from prev year
+                    <span class="badge bg-primary rounded-pill">3</span>
+                  </li>
+                  <li
+                    class="
+                      list-group-item
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                    "
+                  >
+                    Sick leaves available
+                    <span class="badge bg-primary rounded-pill">6</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -53,8 +122,22 @@ export default {
 </script>
 
 <style>
-.dashboardTitle{
-    margin: 0 auto;
-    width: 100%;
+.dashboardTitle {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dashboardFlag {
+  font-size: 1.3rem;
+  border-radius: 2px;
+  margin-right: 10px;
+}
+
+.dashboardFlag > span {
+  border-radius: 2px;
+}
+.offcanvas-title {
+  display: flex;
+  align-items: center;
 }
 </style>

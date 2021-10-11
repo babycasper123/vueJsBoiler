@@ -6,7 +6,7 @@
         class="calendar-month-header-selected-month"
       />
 
-      <div class="dashboardbtnHolder" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">
+      <div class="dashboardbtnHolder" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
         <span class="dashbaordIcon"><i class="fas fa-calendar-check"></i></span>
         <span class="dashbaordText">Dashboard</span>
       </div>
@@ -30,7 +30,7 @@
         :is-today="day.date === today"
       />
     </ol>
-    
+
 
     <Dashboard/>
     
