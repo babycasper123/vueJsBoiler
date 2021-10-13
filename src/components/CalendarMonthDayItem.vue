@@ -6,6 +6,7 @@
       isToday ? 'calendar-day--today' : '',
       isWeekend ? 'weekend' : '',
     ]"
+    @click="()=>this.$emit('dayClicked',day.tsSettings)"
   >
     <span
       :class="day.tsSettings ? day.tsSettings.am : ''"
@@ -76,7 +77,7 @@ export default {
       let isweekend = day == "Saturday" || day == "Sunday" ? true : false;
       return isweekend;
     },
-  },
+  }
 };
 </script>
 

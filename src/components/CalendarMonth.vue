@@ -22,18 +22,22 @@
     </div>
     <CalendarWeekdays />
 
-    <ol class="days-grid">
+    <ol class="days-grid" data-bs-toggle="modal" data-bs-target="#tsSettingsDay">
       <CalendarMonthDayItem
         v-for="day in days"
         :key="day.date"
         :day="day"
         :is-today="day.date === today"
+        @dayClicked="openDayTools"
       />
     </ol>
 
 
     <Dashboard/>
+
+    <DaySettingsTools :showDaySettings="showDaySettings"/>
     
+
 
   </div>
   
@@ -47,6 +51,9 @@ import CalendarMonthDayItem from "./CalendarMonthDayItem";
 import CalendarDateIndicator from "./CalendarDateIndicator";
 import CalendarDateSelector from "./CalendarDateSelector";
 import CalendarWeekdays from "./CalendarWeekdays";
+
+
+import DaySettingsTools from './daySettingsTools'
 
 import Dashboard from "./dashboard"
 
@@ -63,13 +70,15 @@ export default {
     CalendarDateIndicator,
     CalendarDateSelector,
     CalendarWeekdays,
-    Dashboard
+    Dashboard,
+    DaySettingsTools
   },
 
   data() {
     return {
       selectedDate: dayjs(),
       tsSettings: tsSettings,
+      showDaySettings:false
     };
   },
 
@@ -187,6 +196,9 @@ export default {
     selectDate(newSelectedDate) {
       this.selectedDate = newSelectedDate;
     },
+    openDayTools(){
+      this.showDaySettings = true;
+    }
   },
 };
 </script>

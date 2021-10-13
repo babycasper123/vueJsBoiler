@@ -1,29 +1,29 @@
 <template>
   <div class="row">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand timeSheetLogo" href="#">TS</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <!-- <li class="nav-item">
+      <div class="container-fluid">
+        <a class="navbar-brand timeSheetLogo" href="#"></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
-          </li>
+          </li> -->
          
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a
               class="nav-link disabled"
               href="#"
@@ -32,31 +32,44 @@
               >Disabled</a
             >
           </li> -->
-           <li  @mouseover="isHovering = true" @mouseout="isHovering = false" class="nav-item dropdown">
-          <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a> -->
-          <ul class="dropdown-menu" :class="isHovering ? 'show' : ''" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li
+              @mouseover="isHovering = true"
+              @mouseout="isHovering = false"
+              class="nav-item dropdown"
+            >
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            My Events
+          </a>
+              <ul
+                class="dropdown-menu"
+                :class="isHovering ? 'show' : ''"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li><a class="dropdown-item disabled" href="#">Work from home</a></li>
+                <li><a class="dropdown-item" href="#">Request holiday</a></li>
+                <li>
+                  <a class="dropdown-item disabled" href="#">Declare Sickness</a>
+                </li>
+                <li>
+                  <a class="dropdown-item disabled" href="#">My History</a>
+                </li>
+              </ul>
+            </li>
           </ul>
-        </li>
-        </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
   </div>
 </template>
 
 <script>
 export default {
   name: "navbarComponent",
- data: () => {
-     return {
-         isHovering: false
-     }
- },
+  data: () => {
+    return {
+      isHovering: false,
+    };
+  },
   methods: {
     showDropdown: () => {},
   },
@@ -65,15 +78,13 @@ export default {
 
 
 <style scoped>
-.timeSheetLogo{
-    background-color: #3498db;
-    color: white;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    text-align: center;
-    padding: 3px;
-    vertical-align: middle;
-    margin: auto;
+.timeSheetLogo {
+  background: url(../../assets/mantu.svg),
+    linear-gradient(transparent, transparent) no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 81px;
+  height: 20px;
 }
 </style>
