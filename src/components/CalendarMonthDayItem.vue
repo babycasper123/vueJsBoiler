@@ -135,6 +135,7 @@ export default {
   border: 1px solid #d6dadb;
   margin: 2px;
   display: flex;
+  cursor: pointer;
 }
 
 .PM {
